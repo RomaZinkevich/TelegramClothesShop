@@ -75,8 +75,6 @@ def welcome(message):
                 (message.from_user.id,))
     con.commit()
     con.close()
-    stick = open("stickers/HI.tgs", 'rb')
-    bot.send_sticker(message.chat.id, stick)
     bot.send_message(
         message.chat.id, 'Здравствуйте, {0.first_name}!\nЯ - <b>{1.first_name}</b>, помощник в выборе одежды!\n Укажите ваш пол.'
         .format(message.from_user, bot.get_me()), parse_mode='html',
@@ -244,10 +242,6 @@ def selection(message):
     for i in final_result:
         photo = open(i[1], 'rb')
         bot.send_photo(message.chat.id, photo, caption=i[0])
-
-
-[['2 пар футболок', 'image\\male\\2packnike-tshirt.png'],
-    ['ветровка наса', 'image\\male\\nasajacket.png']]
 
 
 bot.polling(none_stop=True)
